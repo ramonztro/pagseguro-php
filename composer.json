@@ -1,0 +1,19 @@
+{
+    "name": "ramonztro/pagseguro-php",
+    "type": "library",
+    "description": "O PagSeguro-PHP permite que você utilize a API do PagSeguro com facilidade.",
+    "homepage": "https://github.com/ramonztro/pagseguro-php/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ramon Kayo",
+            "email": "contato@ramonkayo.com",
+            "homepage": "http://ramonkayo.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ramonztro\\PagSeguroPhp\\": "src/"
+        }
+    }
+}
