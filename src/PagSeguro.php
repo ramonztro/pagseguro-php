@@ -19,9 +19,9 @@ use \Exception;
 class PagSeguro {
 	
 	const 
-		UrlCheckout = 'https://ws.pagseguro.uol.com.br/v2/checkout/',
-		UrlTransactions = 'https://ws.pagseguro.uol.com.br/v3/transactions/',
-		UrlNotifications = 'https://ws.pagseguro.uol.com.br/v3/transactions/notifications/';
+		UrlCheckout = 'https://ws.pagseguro.uol.com.br/v2/checkout',
+		UrlTransactions = 'https://ws.pagseguro.uol.com.br/v3/transactions',
+		UrlNotifications = 'https://ws.pagseguro.uol.com.br/v3/transactions/notifications';
 	
 	private
 		$email = null,
@@ -87,7 +87,7 @@ class PagSeguro {
 	
 	public function transaction($transaction, $url = null) {
 		$url = is_null($url) ? self::UrlTransactions : $url;
-		$url .= $transaction;
+		$url .= '/' . $transaction;
 		$url .= "?email={$this->email}";
 		$url .= "&token={$this->token}";
 	
