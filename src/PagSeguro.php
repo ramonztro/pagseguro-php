@@ -2,7 +2,7 @@
 /*
 +---------------------------------------------------------------------------+
 | PagSeguroPhp                                                              |
-| Copyright (c) 2013-2016, Ramon Kayo                                       |
+| Copyright (c) 2013-2017, Ramon Kayo                                       |
 +---------------------------------------------------------------------------+
 | Author        : Ramon Kayo                                                |
 | Email         : contato@ramonkayo.com                                     |
@@ -43,6 +43,24 @@ class PagSeguro {
 		
 		libxml_use_internal_errors(true);
 	}
+
+	public static function installmentValue($totalValue, $installments) {
+		$factor = array(
+			1 => 1,
+			2 => 0.52255,
+			3 => 0.35347,
+			4 => 0.26898,
+			5 => 0.21830,
+			6 => 0.18453,
+			7 => 0.16044,
+			8 => 0.14240,
+			9 => 0.12838,
+			10 => 0.11717,
+			11 => 0.10802,
+			12 => 0.10040
+		);
+		return $factor[$installments] * $totalValue;
+	}
 	
 	public function checkoutCode($parametros, $url = null) {
 		$xml = simplexml_load_string($this->checkout($parametros, $url));
@@ -52,7 +70,6 @@ class PagSeguro {
 			throw new Exception("{$xml->error[0]->message[0]} ({$xml->error[0]->code[0]})");
 		return $xml->code[0]->__toString();
 	}
-	
 	
 	public function checkout($parametros, $url = null) {
 		$url = is_null($url) ? self::UrlCheckout : $url;
