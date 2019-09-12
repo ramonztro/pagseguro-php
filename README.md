@@ -67,4 +67,4 @@ IN THE SOFTWARE.*
 
 ### Autor
 
-Ramon Kayo - <contato@ramonkayo.com> - <http://twitter.com/ramonztro>
+Ramon Kayo - <contato@ramonk.com>
